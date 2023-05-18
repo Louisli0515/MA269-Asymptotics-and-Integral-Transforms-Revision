@@ -74,3 +74,23 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * Guess the series expansion $x_{+} = a_{0}+\varepsilon a_{1}+\varepsilon^{2} a_{2} + \varepsilon^{3} a_{3} + O(\varepsilon^{4})$ and substitute it in: $$\left(a_{0}+\varepsilon a_{1}+\varepsilon^{2} a_{2}+\varepsilon^{3}a_{3} + O(\varepsilon^{4})\right)^{2} + \varepsilon \left(a_{0}+\varepsilon a_{1}+\varepsilon^{2} a_{2} + \varepsilon^{3} a_{3} + O(\varepsilon^{4})\right) - 1 = 0.$$
 * Therefore matching coefficients: $$O(\varepsilon^{0}): 0 = a_{0}^{2} - 1\implies a_{0} = 1.$$ $$O(\varepsilon^{1}): 0 = 2a_{0}a_{1} + a_{0} = 2a_{1} + 1\implies a_{1} = -\frac{1}{2}.$$ $$O(\varepsilon^{2}): 0 = 2a_{0}a_{2} + a_{1}^{2} + a_{1} = 2a_{2} + \frac{1}{4}-\frac{1}{2}\implies a_{2} = \frac{1}{8}.$$ $$O(\varepsilon^{3}): 0 = 2a_{1}a_{2} + 2a_{0}a_{3} + a_{2} = -\frac{1}{8} + 2a_{3} + \frac{1}{8}\implies a_{3} = 0.$$
 * So $x = 1-\varepsilon/2+\varepsilon^{2}/8+0\varepsilon^{3}+O(\varepsilon^{4})$.
+
+### Singular perturbations
+
+* The previous problem $x^{2}+\varepsilon x - 1 = 0$ is called ***regular***; setting $\varepsilon = 0$ gives a solution, and $\varepsilon$ being small but non-zero changes that solution a little. 
+* However consider now $\varepsilon x^{2} + x - 1 = 0$. If $\varepsilon = 0$, we get only one solution. Such problems are ***singular***.
+
+### The Exponential Integral
+
+* The exponential integral $E_{1}(z)$, is defined for $z > 0$ as $$E_{1}(z) = \int_{z}^{\infty}\frac{e^{-x}}{x}\mathrm{d}x,$$ it turns out that $E_{1}(0)$ is ***singular***, but how singular is it?
+
+#### First attempt: Taylor expansion
+
+* We use the Taylor expansion of $e^{-x}$: $$E_{1}(\varepsilon) = \int_{\varepsilon}^{\infty}\frac{e^{-x}}{x}\mathrm{d}x = \int_{\varepsilon}^{\infty}\frac{1}{x} - 1 + \frac{x}{2!}-\frac{x^{2}}{3!}+...\mathrm{d}x = \left[\log x - x + \frac{x^{2}}{2\times 2!}-\frac{x^{3}}{3\times 3!}+...\right]_ {\varepsilon}^{\infty}.$$
+* The expansion ***diverges at infinity***. Taylor expansion lost the fact that $e^{-x}$ ***decays rapidly*** as $x\to\infty$.
+
+#### Second attempt: Split the integral
+
+* We then split the integral to compare: $$E_{1}(\varepsilon) = \int_{\varepsilon}^{a}\frac{e^{-x}}{x}\mathrm{d}x + \int_{a}^{\infty}\frac{e^{-x}}{x}\mathrm{d}x = \left[\log x - x + \frac{x^{2}}{2\times 2!} - \frac{x^{3}}{3\times 3!} + ...\right]_ {\varepsilon}^{a} + E_{1}(a) = -\log\varepsilon + \varepsilon - \frac{\varepsilon^{2}}{2\times 2!}+\frac{\varepsilon^{3}}{3\times 3!} + \left[E_{1}(a) + \log a - a + \frac{a^{2}}{2\times 2!}-\frac{a^{3}}{3\times 3!}\right].$$
+* The final term is ***independent*** of $\varepsilon$, as $\varepsilon$ does not occur in the expression and is independent of $a$, as $a$ dosen't appear in the first term and $E_{1}(\varepsilon)$ should be independent of $a$.
+* Therefore, the final term must be a ***constant***.
