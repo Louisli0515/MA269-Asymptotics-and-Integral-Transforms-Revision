@@ -114,3 +114,12 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * We again consider the integral $$I(\lambda) = \int_{a}^{b}f(x)e^{\lambda g(x)}\mathrm{d}x\quad\text{as}\quad\lambda\to\infty.$$
 * Suppose that $g(x)$ has a ***maximum*** at $x_{0}\in (a,b)$, where we assume that $g'(x_{0}) = 0$ and that $g''(x_{0}) < 0$. Then locally near that maximum, $$g(x)\approx g(x_{0}) + (x-x_{0})g'(x_{0}) + \frac{1}{2}(x-x_{0})^{2}g''(x_{0}) + O((x-x_{0})^{3}).$$
 * So with the change of variable $y = (x-x_{0})\sqrt{-\lambda g''(x_{0})}$, $$I(\lambda) = e^{\lambda g(x_{0})}\int_{a}^{b}f(x)\exp\set{\frac{1}{2}\lambda g''(x_{0})(x-x_{0})^{2}+O(\lambda(x-x_{0})^{3})}\mathrm{d}x\sim e^{\lambda g(x_{0})}\int_{-\infty}^{\infty}\frac{f(x_{0})e^{-\frac{1}{2}y^{2}}}{\sqrt{-\lambda g''(x_{0})}}\mathrm{d}y\quad\text{as}\quad\lambda\to\infty = \sqrt{\frac{2\pi}{-\lambda g''(x_{0})}}f(x_{0})e^{\lambda g(x_{0})}.$$
+
+#### Laplace's Method Theorem
+
+* If $g(x)$ is twice continuously differentiable on $[a,b]$, and $\exists x_{0}\in (a,b)$ such that $g(x_{0}) = \max_{x\in[a,b]}g(x)$ and $g''(x_{0}) < 0$, then $$\int_{a}^{b}e^{\lambda g(x)}\mathrm{d}x\sim e^{\lambda g(x_{0})}\sqrt{\frac{2\pi}{-\lambda g''(x_{0})}}\quad\text{as}\quad\lambda\to\infty.$$
+* $a$ and $b$ can be $\pm\infty$.
+* Can include $f(x)$ in the integrand by expanding $f$ in a asymptotic series about $x_{0}$.
+* Can get ***further*** terms in the asymptotic series of $I(\lambda)$ by expanding $g(x)$ about $x_{0}$ too.
+* Can deal with problematic cases (e.g. $x_{0} = a, g''(x_{0}) = 0, f(x_{0}) = 0$, etc.) by expanding about $x_{0}$.
+* Can deal with multiple maxima by splitting integral so each integral has ***only one maximum***.
