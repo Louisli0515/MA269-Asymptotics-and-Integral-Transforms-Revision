@@ -143,3 +143,14 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * The ***dominant contribution*** might come from where $\text{Re}(g(z))$ is ***maximum***. Suppose along $\mathcal{C}$, this occurs at $z = z_{0} = q(t_{0})$, where $\frac{\mathrm{d}}{\mathrm{d}t}\text{Re}\left(g(q(t))\right) = 0$. So near $t_{0}$, $$f(q(t)) = f(z_{0})+...\quad g(q(t)) = g(z_{0}) + (t-t_{0})q'(t_{0})g'(z_{0})+...\quad f(z)e^{\lambda g(z)}\cong f(z_{0})e^{\lambda g(z_{0})}e^{\lambda (t-t_{0})q'(t_{0})g'(z_{0})},$$ which is highly oscillatory, so try another approach.
 * Taking the contour with the lower $\text{Re}(g(z))$ means passing through the ***saddle point*** at $z = z_{* }$, where $g'(z_{* }) = 0$. Near $z_{* }$, $$f(z) = f(z_{* }) + (z-z_{* })f'(z_{* })+...,\quad g(z) = g(z_{* }) + 0 + \frac{1}{2}(z-z_{* })^{2}g''(z_{* })+...$$
 * Steepest descent from $z_{* }$ means taking the direction where $\frac{1}{2}(z-z_{* })^{2}g''(z_{* }) < 0$ and ***real***.
+* Parameterising the section of the ***steepest descent*** contour $\mathcal{C}_ {sd}$ near to $z_{* }$ by $t_{* }$, we therefore set $z-z_{* } = t_{* }/\sqrt{-\lambda g''(z_{* })}$.
+* ***Changing variables*** to $t_{* }$, $$I(\lambda) = \int_{-\infty}^{\infty}\left(f(z_{* })+\frac{t_{* }f'(z_{* })}{\sqrt{-\lambda g''(z_{* })}} + O\left(\frac{1}{\lambda}\right)\right)\exp\set{\lambda g(z_{* }) - \frac{1}{2}t_{* }^{2}+O\left(\frac{1}{\sqrt{\lambda}}\right)}\frac{\mathrm{d}t_{* }}{\sqrt{-\lambda g''(z_{* })}} = \sqrt{\frac{2\pi}{-\lambda g''(z_{* })}} f(z_{* })e^{\lambda g(z_{* })}\left(1+O\left(\frac{1}{\lambda}\right)\right). $$
+* The ***dominant contribution*** comes from a region of size $z - z_{* } = \Theta(\lambda^{-1/2}),$ so the details of $\mathcal{C}_ {sd}$ aren't important away from the ***saddle point*** $z_{* }$.
+* Sometimes there are ***more than one*** saddle point. The ***dominant contribution*** comes from the ***highest saddle point*** (with the ***biggest*** Re$(g(z))$) that mus tbe ***deformed*** through to get from the start point to the end point.
+* Sometimes the highest Re$(g(z))$ is at an ***end point***. Then use ***Watson's Lemma*** instead for the ***dominant contribution***.
+
+#### Stationary Phase
+
+* Consider $$I(\lambda) = \int_{a}^{b}f(x)e^{i\lambda g(x)}\mathrm{d}x\quad\text{as}\quad\lambda\to\infty,$$ with $f$ and $g$ real. Suppose $g'(x_{0}) = 0$ for some $x_{0}\in(a,b)$. Then near $x_{0}$, $$ig(x) = ig(x_{0}) + i(x-x_{0})g'(x_{0}) + \frac{1}{2}i(x-x_{0})^{2}g''(x_{0})+...$$
+* For the steepest descent contour, we want $$\frac{i}{2}(x-x_{0})^{2}g''(x_{0}) = -\frac{1}{2}t^{2}\implies x = x_{0} + \frac{te^{\pm i\pi/4}}{\sqrt{\pm g''(x_{0})}},$$ where $\pm 1 = \text{sgn}(g''(x_{0})).$ 
+* Applying the steepest descent formula, $$I(\lambda) = \int_{a}^{b} f(x)e^{i\lambda g(x)}\mathrm{d}x\sim\sqrt{\frac{2\pi}{\lambda|g''(x_{0})|}}f(x_{0})e^{i\lambda g(x_{0})\pm i\pi/4}\quad\text{as}\quad\lambda\to\infty.$$
