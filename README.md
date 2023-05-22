@@ -94,3 +94,17 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * We then split the integral to compare: $$E_{1}(\varepsilon) = \int_{\varepsilon}^{a}\frac{e^{-x}}{x}\mathrm{d}x + \int_{a}^{\infty}\frac{e^{-x}}{x}\mathrm{d}x = \left[\log x - x + \frac{x^{2}}{2\times 2!} - \frac{x^{3}}{3\times 3!} + ...\right]_ {\varepsilon}^{a} + E_{1}(a) = -\log\varepsilon + \varepsilon - \frac{\varepsilon^{2}}{2\times 2!}+\frac{\varepsilon^{3}}{3\times 3!} + \left[E_{1}(a) + \log a - a + \frac{a^{2}}{2\times 2!}-\frac{a^{3}}{3\times 3!}\right].$$
 * The final term is ***independent*** of $\varepsilon$, as $\varepsilon$ does not occur in the expression and is independent of $a$, as $a$ dosen't appear in the first term and $E_{1}(\varepsilon)$ should be independent of $a$.
 * Therefore, the final term must be a ***constant***.
+
+### Watson's Lemma
+
+* Consider $$I(\lambda) = \int_{0}^{a}f(x)e^{-\lambda x}\mathrm{d}x.$$ If we are interested in $\lambda\to\infty$, we can rescale using $x = t/\lambda$, giving $$I(\lambda) = \int_{0}^{a\lambda}f\left(\frac{t}{\lambda}\right)e^{-t}\frac{\mathrm{d}t}{\lambda} = \sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{\lambda^{n+1}}+O\left(\frac{e^{-\lambda a}}{\lambda}\right).$$
+
+#### Watson's Lemma Theorem
+
+* If $f(x)\sim\displaystyle\sum_{n=0}^{N}a_{n}x^{\alpha_{n}}$ as $x\to 0$ with $\alpha_{0} > -1$, and if $f(x)$ is ***bounded*** for $x\in[\varepsilon, a]$ for all $\varepsilon > 0$, then $$\int_{0}^{a}f(x)e^{-\lambda x}\mathrm{d}x\sim\sum_{n=0}^{N}\frac{a_{n}\Gamma(\alpha_{n}+1)}{\lambda^{\alpha_{n}+1}}\quad\text{as}\quad\lambda\to\infty,$$ where $$\Gamma(n+1) = \int_{0}^{\infty}t^{n}e^{-t}\mathrm{d}t = \left[-t^{n}e^{-t}\right]_ {0}^{\infty} + n\int_{0}^{\infty} t^{n-1}e^{-t}\mathrm{d}t = n!.$$
+
+#### Watson's Lemma General Form
+
+* Consider $$I(\lambda) = \int_{a}^{b}f(x)e^{\lambda g(x)}\mathrm{d}x\quad\text{as}\quad\lambda\to\infty.$$
+* An ***exponentially large contribution*** comes from near where $g(x)$ is ***largest***. If $\max_{x\in[a,b]}g(x)$ is at an endpoint, say at $a$, and $g'(a)\ne 0$, then Watson's lemma is ***applicable***: $$I(\lambda) = \int_{a}^{a+\delta}f(x)e^{\lambda g(x)}\mathrm{d}x + \int_{a+\delta}^{b}f(x)e^{\lambda g(x)}\mathrm{d}x.$$
+* The second integral will be exponentially small in comparison with the first. So ***changing variables*** by setting $y = g(a) - g(x)$, $$I(\lambda) = e^{\lambda g(a)}\int_{0}^{g(a) - g(a + \delta)} f(x(y))e^{-\lambda y}\frac{\mathrm{d}y}{-g'(x(y))}+O\left(e^{\lambda g(a+\delta)}\right) = e^{\lambda g(a)}\int_{0}^{g(a)-g(a+\delta)}F(y)e^{-\lambda y}\mathrm{d}y + O\left(e^{\lambda g(a+\delta)}\right)\sim e^{\lambda g(a)}\sum_{n=0}^{N}\frac{F_{n}\Gamma(\alpha_{n}+1)}{\lambda^{\alpha_{n}+1}},$$ where $F(y) = \frac{f(x(y))}{-g'(x(y))}\sim\displaystyle\sum_{n=0}^{N}F_{n}y^{\alpha_{n}}\quad\text{as}\quad y\to 0.$
