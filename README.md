@@ -123,3 +123,11 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * Can get ***further*** terms in the asymptotic series of $I(\lambda)$ by expanding $g(x)$ about $x_{0}$ too.
 * Can deal with problematic cases (e.g. $x_{0} = a, g''(x_{0}) = 0, f(x_{0}) = 0$, etc.) by expanding about $x_{0}$.
 * Can deal with multiple maxima by splitting integral so each integral has ***only one maximum***.
+
+#### Stirling's Formula
+
+* Consider $$\Gamma(\lambda + 1) = \int_{0}^{\infty}x^{\lambda}e^{-x}\mathrm{d}x.$$ We have already seen that $\Gamma(n+1) = n!$, but how does $\lambda! = \Gamma(\lambda+1)$ behave as $\lambda\to\infty$?
+* Note that $$\Gamma(\lambda+1) = \int_{0}^{\infty}e^{-x + \lambda\log x}\mathrm{d}x = \int_{0}^{\infty}e^{-x}e^{\lambda\log x}\mathrm{d}x,$$ so we first try $f(x) = e^{-x}$ and $g(x) = \log x$. But then $g(x)$ is ***unbounded***, and $g'(x) = \frac{1}{x}\ne 0$. So our try ***fails***.
+* The integrand has a ***maximum*** when $$\frac{\mathrm{d}}{\mathrm{d}x}(x^{\lambda}e^{-x}) = x^{\lambda-1}e^{-x}(\lambda - x)\implies x = \lambda.$$
+* The ***motives the change of variable*** $x = \lambda t$, leading to $$\Gamma(\lambda+1) = \int_{0}^{\infty}\lambda^{\lambda}t^{\lambda}e^{-\lambda t}\lambda\mathrm{d}t = \lambda^{\lambda + 1}\int_{0}^{\infty}e^{-\lambda(t-\log t)}\mathrm{d}t,$$ so we take $f(t) = 1$ and $g(t) = -(t-\log t)$. Hence by ***differentiation*** we note that when $t_{0} = 1$, $g'(t_{0}) = 0$ and reaches the ***maximum***. Also we calculate that $g''(t_{0}) = -1.$
+* Using also that $g(t_{0}) = -1$, Laplace's method gives $$\Gamma(\lambda + 1) \sim \lambda^{\lambda + 1}\sqrt{\frac{2\pi}{-\lambda\times-1}}e^{-\lambda} = \sqrt{2\pi\lambda}\lambda^{\lambda}e^{-\lambda},$$ which is the Stirling's approximation.
