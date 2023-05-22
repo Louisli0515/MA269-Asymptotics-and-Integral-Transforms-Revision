@@ -131,3 +131,15 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * The integrand has a ***maximum*** when $$\frac{\mathrm{d}}{\mathrm{d}x}(x^{\lambda}e^{-x}) = x^{\lambda-1}e^{-x}(\lambda - x)\implies x = \lambda.$$
 * The ***motives the change of variable*** $x = \lambda t$, leading to $$\Gamma(\lambda+1) = \int_{0}^{\infty}\lambda^{\lambda}t^{\lambda}e^{-\lambda t}\lambda\mathrm{d}t = \lambda^{\lambda + 1}\int_{0}^{\infty}e^{-\lambda(t-\log t)}\mathrm{d}t,$$ so we take $f(t) = 1$ and $g(t) = -(t-\log t)$. Hence by ***differentiation*** we note that when $t_{0} = 1$, $g'(t_{0}) = 0$ and reaches the ***maximum***. Also we calculate that $g''(t_{0}) = -1.$
 * Using also that $g(t_{0}) = -1$, Laplace's method gives $$\Gamma(\lambda + 1) \sim \lambda^{\lambda + 1}\sqrt{\frac{2\pi}{-\lambda\times-1}}e^{-\lambda} = \sqrt{2\pi\lambda}\lambda^{\lambda}e^{-\lambda},$$ which is the Stirling's approximation.
+
+### The Method of Stationary Phase
+
+* Suppose we have a rapidly ***oscillating integral***, say $$I(\lambda) = \int_{0}^{\infty}f(x)\cos(\lambda g(x))\mathrm{d}x.$$
+* Because of ***cancellation***, the integral are hard to compute, as $\lambda\to\infty$, the ***dominant*** contribution comes from where there is the ***least cancellation*** due to ***oscillation***. The Method of Stationary Phase states that $$I(\lambda)\sim\sqrt{\frac{2\pi}{\lambda|g''(x_{0})|}}f(x_{0})\cos(\lambda g(x_{0})\pm\pi/4),$$ where $g'(x_{0}) = 0$ and $\pm 1 = \text{sgn}(g''(x_{0}).$
+
+### The Method of Steepest Descent
+
+* Suppose for large $\lambda$, we want to evaluate the integral $$I(\lambda) = \int_{\mathcal{C}}f(z)e^{\lambda g(z)}\mathrm{d}z,$$ where $\mathcal{C}$ is some contour in the complex plane (say $\mathcal{C} = \set{q(t):a\leq t\leq b}$)and $f(z)$ and $g(z)$ are complex differentiable.
+* The ***dominant contribution*** might come from where $\text{Re}(g(z))$ is ***maximum***. Suppose along $\mathcal{C}$, this occurs at $z = z_{0} = q(t_{0})$, where $\frac{\mathrm{d}}{\mathrm{d}t}\text{Re}\left(g(q(t))\right) = 0$. So near $t_{0}$, $$f(q(t)) = f(z_{0})+...\quad g(q(t)) = g(z_{0}) + (t-t_{0})q'(t_{0})g'(z_{0})+...\quad f(z)e^{\lambda g(z)}\cong f(z_{0})e^{\lambda g(z_{0})}e^{\lambda (t-t_{0})q'(t_{0})g'(z_{0})},$$ which is highly oscillatory, so try another approach.
+* Taking the contour with the lower $\text{Re}(g(z))$ means passing through the ***saddle point*** at $z = z_{* }$, where $g'(z_{* }) = 0$. Near $z_{* }$, $$f(z) = f(z_{* }) + (z-z_{* })f'(z_{* })+...,\quad g(z) = g(z_{* }) + 0 + \frac{1}{2}(z-z_{* })^{2}g''(z_{* })+...$$
+* Steepest descent from $z_{* }$ means taking the direction where $\frac{1}{2}(z-z_{* })^{2}g''(z_{* }) < 0$ and ***real***.
