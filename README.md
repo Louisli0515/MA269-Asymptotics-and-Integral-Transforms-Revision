@@ -175,3 +175,23 @@ To answer this, we ***nondomensionalise***. Pick a ***timescale*** $T^{* }$ and 
 * $$\frac{\mathrm{d}y^{* }}{\mathrm{d}t^{* }} = L^{* }\sqrt{\frac{K^{* }}{m^{* }}}\frac{\mathrm{d}y}{\mathrm{d}t}$$ and $$\frac{\mathrm{d}^{2}y^{* }}{(\mathrm{d}t^{* })^{2}} = L^{* }\frac{K^{* }}{m^{* }}\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}.$$
 
 Note that $\frac{\mathrm{d}y}{\mathrm{d}t}$ scales like $\frac{y}{t}$. The differential equation then becomes, on division by $K^{* }L^{* }$, $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}} + R\frac{\mathrm{d}y}{\mathrm{d}t} + y = 0,$$ where $R = \frac{D^{* }}{\sqrt{K^{* }m^{* }}}$ is a ***dimensionless parameter***.
+
+#### Regular problems
+
+Consider $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}} + \varepsilon\frac{\mathrm{d}y}{\mathrm{d}t} + y = 0\quad y(0) = 0\quad\text{and}\quad \dot{y}(0) = 1.$$
+
+* Using ***Method 3: series expansion***, we guess a series $$y(t) = y_{0}(t) + \varepsilon y_{1}(t) + \varepsilon^{2}y_{2}(t)+...,$$
+* Substituting in, $$(\ddot{y_{0}} + \varepsilon\ddot{y_{1}}+...) + (\varepsilon\dot{y_{0}}+\varepsilon^{2}\dot{y_{1}}+...) + (y_{0} + \varepsilon y_{1}+...) = 0,\quad y(0) = 0 = y_{0}(0)+\varepsilon y_{1}(0)+...\quad \dot{y}(0) = 1 = \dot{y_{0}}(0) + \varepsilon\dot{y_{1}}(0)+...$$
+* Solving at each other, $$\Theta(\varepsilon^{0}): \ddot{y_{0}}+y_{0} = 0\quad y_{0}(0) = 0\quad \dot{y_{0}}(0) = 1\implies y_{0} = A_{0}\cos t+B_{0}\sin t = \sin t,$$ and $$\Theta(\varepsilon^{1}): \ddot{y_{1}} + \dot{y_{0}} + y_{1} = 0,\quad y_{1}(0) = 0\quad\dot{y_{1}}(0) = 0\implies \ddot{y_{1}}+y_{1} = -\cos t\implies y_{1}(t) = A_{1}\cos t + B_{1}\sin t - \frac{1}{2}t\sin t = -\frac{1}{2}t\sin t.$$
+* So the ***asymptotic solution*** is $y\sim\sin t - \frac{1}{2}\varepsilon t\sin t+...$
+
+#### Rescaling and balancing
+
+Sometimes we need to rescale differential equations first. Consider $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}} + \frac{1}{\varepsilon}\frac{\mathrm{d}y}{\mathrm{d}t} + y = 0\quad y(0) = 0,\quad\frac{\mathrm{d}y}{\mathrm{d}t}(0) = 1.$$
+
+* Try ***change of variable*** $t = a\tau$. Then $$\frac{1}{a^{2}}\frac{\mathrm{d}^{2}y}{\mathrm{d}\tau^{2}} + \frac{1}{a\varepsilon}\frac{\mathrm{d}y}{\mathrm{d}\tau} + y = 0\quad, y(0) = 0,\quad \frac{\mathrm{d}y}{\mathrm{d}\tau}(0) = a.$$
+* Mathcing terms: $$\frac{1}{a^{2}} = 1\implies a = 1,$$ $$\frac{1}{a\varepsilon} = 1\implies a = \frac{1}{\varepsilon}$$ and $$\frac{1}{a^{2}} = \frac{1}{a\varepsilon}\implies a = \varepsilon.$$
+* For $a = \varepsilon$, we get $$\frac{\mathrm{d}^{2}y}{\mathrm{d}\tau^{2}} + \frac{\mathrm{d}y}{\mathrm{d}\tau} + \varepsilon^{2}y = 0\quad y(0) = 0,\quad \frac{\mathrm{d}y}{\mathrm{d}\tau}(0) = \varepsilon.$$
+* Use ***Method 2: successive approximation***: for $\varepsilon = 0$, $$y_{0} = A_{0} + B_{0}e^{-\tau} = \varepsilon(1-e^{-\tau}).$$
+* So try $y(\tau) = y_{0}(\tau) + e_{0}(\tau),$ $$\frac{\mathrm{d}^{2}e_{0}}{\mathrm{d}\tau^{2}} + \frac{\mathrm{d}e_{0}}{\mathrm{d}\tau} + \varepsilon^{2}e_{0}+\varepsilon^{3}(1-e^{-\tau}) = 0,\quad e_{0}(0) = 0,\quad \frac{\mathrm{d}y}{\mathrm{d}\tau}(0) = 0,$$ $$\implies e_{0} = -\varepsilon^{3}\tau(1+e^{-\tau}) + 2\varepsilon^{3}(1-e^{-\tau}) + e_{1}(\tau).$$
+* Consequently, as $\varepsilon\to 0$ for fixed $\tau$, $$y\sim\varepsilon(1-e^{-\tau}) - \varepsilon^{3}(\tau(1+e^{-\tau}) - 2(1-e^{-\tau})).$$
