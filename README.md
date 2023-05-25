@@ -154,3 +154,7 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 * Consider $$I(\lambda) = \int_{a}^{b}f(x)e^{i\lambda g(x)}\mathrm{d}x\quad\text{as}\quad\lambda\to\infty,$$ with $f$ and $g$ real. Suppose $g'(x_{0}) = 0$ for some $x_{0}\in(a,b)$. Then near $x_{0}$, $$ig(x) = ig(x_{0}) + i(x-x_{0})g'(x_{0}) + \frac{1}{2}i(x-x_{0})^{2}g''(x_{0})+...$$
 * For the steepest descent contour, we want $$\frac{i}{2}(x-x_{0})^{2}g''(x_{0}) = -\frac{1}{2}t^{2}\implies x = x_{0} + \frac{te^{\pm i\pi/4}}{\sqrt{\pm g''(x_{0})}},$$ where $\pm 1 = \text{sgn}(g''(x_{0})).$ 
 * Applying the steepest descent formula, $$I(\lambda) = \int_{a}^{b} f(x)e^{i\lambda g(x)}\mathrm{d}x\sim\sqrt{\frac{2\pi}{\lambda|g''(x_{0})|}}f(x_{0})e^{i\lambda g(x_{0})\pm i\pi/4}\quad\text{as}\quad\lambda\to\infty.$$
+
+### Asymptotics of Differential Equations
+
+Consider a damped spring with extension $y^{* }(t^{* })$,
