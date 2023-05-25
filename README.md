@@ -195,3 +195,26 @@ Sometimes we need to rescale differential equations first. Consider $$\frac{\mat
 * Use ***Method 2: successive approximation***: for $\varepsilon = 0$, $$y_{0} = A_{0} + B_{0}e^{-\tau} = \varepsilon(1-e^{-\tau}).$$
 * So try $y(\tau) = y_{0}(\tau) + e_{0}(\tau),$ $$\frac{\mathrm{d}^{2}e_{0}}{\mathrm{d}\tau^{2}} + \frac{\mathrm{d}e_{0}}{\mathrm{d}\tau} + \varepsilon^{2}e_{0}+\varepsilon^{3}(1-e^{-\tau}) = 0,\quad e_{0}(0) = 0,\quad \frac{\mathrm{d}y}{\mathrm{d}\tau}(0) = 0,$$ $$\implies e_{0} = -\varepsilon^{3}\tau(1+e^{-\tau}) + 2\varepsilon^{3}(1-e^{-\tau}) + e_{1}(\tau).$$
 * Consequently, as $\varepsilon\to 0$ for fixed $\tau$, $$y\sim\varepsilon(1-e^{-\tau}) - \varepsilon^{3}(\tau(1+e^{-\tau}) - 2(1-e^{-\tau})).$$
+
+#### Singular problems and Van Dyke's matching rule
+
+* Suppose our solution $f(x)$ has an ***outer solution*** which satisfies, as $\varepsilon\to 0$ with $x$ fixed, $$f(x)\sim\sum_{n=0}^{P}\varepsilon^{n} f_{n}(x) = E_{P}f,$$ where $E_{p}$ means taking the first $(P+1)$ terms of the ***outer asymptotic series***. 
+* Suppose also that for $x = \varepsilon\xi$, then as $\varepsilon\to 0$ with $\xi$ fixed, we obtain the ***inner solution*** $$f(\varepsilon\xi)\sim\sum_{n=0}^{Q}\varepsilon^{n} g_{n}(\xi) = H_{Q}f,$$ where $H_{Q}$ means taking the first $(Q+1)$ terms of the ***inner asymptotic seires***.
+* ***Van Dyke's matching rule*** states that these two asymptotic series should match according to the matching rule, $$E_{P}H_{Q}f = H_{Q}E_{P}f,$$ for suitable values of $P$ and $Q$; i.e. expanding the ***inner solution*** in the ***outer variable*** gives the same as expanding the ***outer solution*** in the ***inner variable***. 
+
+#### Composite expansions
+
+Suppose that, for $x = \varepsilon\xi$, we have $$f(x)\sim E_{P}f = \sum_{n=0}^{P}\varepsilon^{n}f_{n}(x)$$ for fixed $x$ as $\varepsilon\to 0$, $$f(x)\sim H_{Q}f = \sum_{n=0}^{Q}\varepsilon^{n} g_{n}(\xi)$$ for fixed $\xi$ as $\varepsilon\to 0$, and suppose also that these inner and outer asymptotic series match according to Van Dyke's rule, then $$C(x;\varepsilon) = E_{P}f + H_{Q}f - E_{P}H_{Q}f$$ defines a ***composite expansion***, valid as $\varepsilon\to 0$ for fixed $x$ or fixed $\xi$. Indeed, $$E_{P}C = E_{P}E_{P}f + E_{P}H_{Q}f - E_{P}E_{P}H_{Q}f = E_{P}f,$$ and $$H_{Q}C = H_{Q}E_{P}f + H_{Q}H_{Q}f - H_{Q}H_{Q}E_{P}f = H_{Q}f.$$
+
+* This composite expansion $C(x;\varepsilon)$ is not a Poincare series, and so is ***not necessarily unique***. For example, a multiplicative composite expansion is given by $$M(x;\varepsilon) = \frac{(E_{P}f)(H_{Q}f)}{E_{P}H_{Q}f}.$$
+
+#### Rescaling for nonlinear differential equations
+
+For nonlinear ODEs for $y(t)$, we may need to rescale $y$ as well as $t$. For example, consider $$\varepsilon\ddot{y}+y\dot{y} - y = 0.$$ 
+
+* To leading order, for $y = \Theta(1)$ and $t = \Theta(1)$, $$0 = y_{0}\dot{y_{0}} - y_{0} = y_{0}(\dot{y_{0}} - 1)\implies y_{0} = 0\quad\text{or}\quad y_{0} = A+t.$$
+* In either case, $y_{0}\approx 0$ for some value of $t$, and near that value of $t$ we would have $y_{0} = \Theta(\varepsilon)$, and therefore $\varepsilon\ddot{y_{0}}$ could be ***important***.
+* So instead, we consider rescaling $t = \varepsilon^{\alpha}\tau$ and $y(t) = \varepsilon^{\beta}Y(\tau)$. Then $$\varepsilon^{1+\beta - 2\alpha}Y'' + \varepsilon^{2\beta - \alpha}Y' - \varepsilon^{\beta} Y = 0.$$
+* Mathcing the powers of $\varepsilon$ in these three terms gives $\alpha = \beta = \frac{1}{2}$, for which the ODE becomes $$\sqrt{\varepsilon}(Y'' + YY' - Y) = 0,$$ which is a full nonlinear problem with ***no small parameters***.
+
+### Integral Transforms
