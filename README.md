@@ -218,3 +218,9 @@ For nonlinear ODEs for $y(t)$, we may need to rescale $y$ as well as $t$. For ex
 * Mathcing the powers of $\varepsilon$ in these three terms gives $\alpha = \beta = \frac{1}{2}$, for which the ODE becomes $$\sqrt{\varepsilon}(Y'' + YY' - Y) = 0,$$ which is a full nonlinear problem with ***no small parameters***.
 
 ### Integral Transforms
+
+Given a function $f(x)$, and integral transformation of $f$ yields another function $g(y)$, where $$g(y) = \int_{\mathcal{C}}f(x)K(x,y)\mathrm{d}x.$$
+
+Often, $\mathcal{C}$ is $\mathbb{R}$ or $[0,\infty)$. $K(x,y)$ is called the ***kernel*** of the integral transform.
+
+### Complex Methods 
