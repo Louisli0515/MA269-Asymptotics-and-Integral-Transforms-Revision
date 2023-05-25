@@ -157,4 +157,21 @@ Consider $x^{2}+\varepsilon x - 1 = 0$ as $\varepsilon\to 0$. How could we find 
 
 ### Asymptotics of Differential Equations
 
-Consider a damped spring with extension $y^{* }(t^{* })$,
+Consider a damped spring with extension $y^{* }(t^{* })$, governed by the differential equation $$m^{* }\frac{\mathrm{d}^{2}y^{* }}{(\mathrm{d}t^{* })^{2}} = -K^{* }y^{* }- D^{* }\frac{\mathrm{d}y^{* }}{\mathrm{d}t^{* }},$$ where a star denotes a ***dimensional quantity***, with units 
+
+* $y^{* }$ = meters $(m)$,
+* $t^{* }$ = seconds $(s)$,
+* $m^{* }$ = kilograms $(kg)$,
+* $K^{* }$ = $kgs^{-2}$,
+* $D^{* }$ = $kgs^{-1}$.
+
+#### Nondimensionalisation and scaling
+
+In the above differential equation, is $D^{* } = 10kgs^{-1}$ large or small? Does it affect the possible types of behaviours of the spring or does it just scale the response?
+
+To answer this, we ***nondomensionalise***. Pick a ***timescale*** $T^{* }$ and a ***lengthscale*** $L^{* }$, $$T^{* } = \sqrt{\frac{m^{* }}{K^{* }}},$$ and change to ***dimensionless variables***:
+
+* $t^{* } = tT^{* } = t\sqrt{\frac{m^{* }}{K^{* }}}$ and $y^{* }(t^{* }) = L^{* }y(t)$, then
+* $$\frac{\mathrm{d}y^{* }}{\mathrm{d}t^{* }} = L^{* }\sqrt{\frac{K^{* }}{m^{* }}}\frac{\mathrm{d}y}{\mathrm{d}t}$$ and $$\frac{\mathrm{d}^{2}y^{* }}{(\mathrm{d}t^{* })^{2}} = L^{* }\frac{K^{* }}{m^{* }}\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}.$$
+
+Note that $\frac{\mathrm{d}y}{\mathrm{d}t}$ scales like $\frac{y}{t}$. The differential equation then becomes, on division by $K^{* }L^{* }$, $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}} + R\frac{\mathrm{d}y}{\mathrm{d}t} + y = 0,$$ where $R = \frac{D^{* }}{\sqrt{K^{* }m^{* }}}$ is a ***dimensionless parameter***.
