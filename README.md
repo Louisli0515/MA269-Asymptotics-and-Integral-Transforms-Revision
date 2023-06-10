@@ -249,3 +249,15 @@ First of all, consider an isolated singularity of $f(z)$ at $z_{0}$, so that in 
 #### Contour integral example
 
 Consider the function $\tilde{g}(\omega) = \frac{2}{5+2i\omega - \omega^{2}}$, the Fourier inversion formula gives $$g(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\frac{2e^{i\omega t}}{5+2i\omega - \omega^{2}}\mathrm{d}\omega.$$
+
+<img width = 50% height = 50% src = https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/assets/128298224/ea6da8a0-4ec0-4751-81d1-00ea828c498e>
+
+* Consider the integration contour given by $\mathcal{C}_ {\pm} = \set{Re^{\pm i\theta}:0\leq\theta\leq\pi}$. Along $\mathcal{C}_ {+}$, provided $t > 0$, $$\left|\frac{1}{2\pi}\int_{\mathcal{C}_ {+}}\tilde{g}(\omega)e^{i\omega t}\mathrm{d}\omega\right|\leq\frac{1}{2\pi}\frac{2}{R^{2}-2R-5}\cdot 1\cdot \pi R\to 0,$$ as $R\to\infty$.
+* The part $\frac{2}{R^{2}-2R-5}\leq\max|\tilde{g}|$, the part $1 = \max|e^{i\omega t}|$ and $\pi R = L$.
+* Hence if $\mathcal{C}_ {1} = \set{t:-R\leq t\leq R}$, then for $t > 0$, $$\frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde{g}(\omega)e^{i\omega t}\mathrm{d}\omega = \lim_{R\to\infty}\frac{1}{2\pi}\int_{\mathcal{C}_ {1}\cup\mathcal{C}_ {+}}\tilde{g}(\omega)e^{i\omega t}\mathrm{d}\omega,$$ and similarly for $t < 0$ and $\mathcal{C}_ {1}\cup\mathcal{C}_ {-}$.  
+* We can therefore consider the closed integration contours $\mathcal{C}_ {1}\cup\mathcal{C}_ {+}$ and $\mathcal{C}_ {1}\cup\mathcal{C}_ {-}$.
+* The singularities of $\tilde{g}(\omega)$ are when $$\omega^{2}-2i\omega - 5 = 0\Leftrightarrow \omega = i\pm 2,$$ so residues are $$\text{Res}(i+2) = \frac{1}{2\pi}\frac{2e^{i(i+2)t}}{2i-2(i+2)} = \frac{1}{4\pi}e^{-t}e^{-2it},$$ and $$\text{Res}(i-2) = \frac{-1}{4\pi}e^{-t}e^{2it}.$$
+* For $t > 0$, we can use ***Cauchy's Theorem*** to deform the contour of integration to around the singularities, and using Residue's Theorem gives for $t > 0$, $$g(t) = 2\pi i\left(\frac{1}{4\pi}e^{-t}e^{-2it}-\frac{1}{4\pi}e^{-t}e^{2it}\right) = e^{-t}\sin(2t).$$
+* For $t < 0$, we get $g(t) = 2\pi i(0) = 0$. Hence, $$g(t) = 1_{t > 0}e^{-t}\sin(2t).$$
+
+We can check this by using Fourier Transform: $$\tilde{g}(\omega) = \int_{-\infty}^{\infty}1_{t > 0}e^{-t}\sin(2t)e^{-i\omega t}\mathrm{d}t = \frac{\frac{1}{2}}{\omega - (i-2)} - \frac{\frac{1}{2}}{\omega - (i+2)}.$$
