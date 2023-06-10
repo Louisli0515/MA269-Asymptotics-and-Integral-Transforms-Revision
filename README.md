@@ -226,3 +226,11 @@ Given a function $f(x)$, and integral transformation of $f$ yields another funct
 Often, $\mathcal{C}$ is $\mathbb{R}$ or $[0,\infty)$. $K(x,y)$ is called the ***kernel*** of the integral transform.
 
 ### Complex Methods 
+
+#### A useful estimate for the magnitude of a complex integral
+
+* A useful estimate for the magnitude of a complex integral is that $$\left|\int_{\mathcal{C}}f(z)\mathrm{d}z\right|\leq\max_{z\in\mathcal{C}}|f(z)|\int_{a}^{b}\left|\frac{\mathrm{d}q}{\mathrm{d}t}\right|\mathrm{d}t = \max_{z\in\mathcal{C}}|f(z)|L,$$ where $L$ is the length of the curve $\mathcal{C}$.
+
+#### Cauchy's Theorem
+
+* If $f(z)$ is ***differentiable everywhere*** in $\mathcal{D}$ and $\mathcal{D}$ is ***simply connected***, which means if any path in $\mathcal{D}$ can be smoothly deformed into any other path in $\mathcal{D}$ between the same ned points without moving the end points, then the integral of $f(z)$ is independent of the path.
