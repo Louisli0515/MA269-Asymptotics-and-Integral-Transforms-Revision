@@ -15,6 +15,8 @@ Second, in this module, we are going to cover a lot of computations, so some exp
 
 ## Example sheets
 
+[MA269_Asymptotics_Integral_transforms_tutorial_sheet.pdf](https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/files/11712953/MA269_Asymptotics_Integral_transforms_tutorial_sheet.pdf)
+
 ### Big O notation
 
 * For functions $f(x)$ and $g(x)$, we say that $$f(x) = O(g(x))\quad\text{as}\quad x\to a\quad\Leftrightarrow \left|\frac{f(x)}{g(x)}\right|\text{is bounded as}x\to a.$$
