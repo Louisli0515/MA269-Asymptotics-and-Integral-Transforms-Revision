@@ -278,7 +278,7 @@ We can check this by using ***Fourier Transform***: $$\tilde{g}(\omega) = \int_{
 * ***Differentiation***: If $g(t) = f'(t)$, then $\tilde{g}(\omega) = i\omega\tilde{f}(\omega)$.
 * ***Product***: If $g(t) = tf(t)$, then $\tilde{g}(\omega) = i\tilde{f}'(\omega)$.
 
-#### Examples with ODE
+#### Example with ODE
 
 Consider $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}+\frac{\mathrm{d}y}{\mathrm{d}t}+ty = 0,\quad y(0) = 1\quad\text{and}\quad\lim_{t\to-\infty}y(t) = 0.$$
 
@@ -317,3 +317,36 @@ One limitation of Fourier transforms is that they only exist for functions $f:\m
 * For $f(t) = \sin(at)$, provided $\text{Re}(s) > |\text{Im}(a)|$, $$f(t) = \frac{1}{2i}(e^{iat}-e^{-iat})\implies\hat{f}(s) = \frac{a}{s^{2}+a^{2}}.$$
 * For $f(t) = t^{n}$, provided $\text{Re}(s) > 0$, $$\hat{f}(s) = \int_{0}^{\infty}t^{n}e^{-st}\mathrm{d}t = \frac{\Gamma(n+1)}{s^{n+1}}.$$
 * For $f(t) = e^{t^{2}}$, then $\hat{f}(s)$ doesn't exist for any $s$.
+
+#### Properties of Laplace transforms
+
+* ***Linearity***: If $h(t) = af(t)+bg(t)$, then $\hat{s} = a\hat{f}(s)+b\hat{g}(s).$
+* ***Shift property***(I): If $g(t) = f(t-a)$, then $\hat{g}(s) = e^{-sa}\hat{f}(s)$. (Have to zero extend first)
+* ***Shift property***(II): If $g(t) = e^{at}f(t)$, then $\hat{g}(s) = \hat{f}(s-a).$
+* ***Scaling***: If $g(t) = f(at)$, then $\hat{g}(s) = \frac{1}{a}\hat{f}(s/a)$.
+* ***Product***: If $g(t) = tf(t)$, then $\hat{g}(s) = -\frac{\mathrm{d}\hat{f}}{\mathrm{d}s}(s)$.
+* ***Differentiation1***: If $g(t) = \frac{\mathrm{d}f}{\mathrm{d}t}(t) = \dot{f}(t)$, then $\hat{g}(s) = -f(0) + s\hat{f}(s)$.
+* ***Differentiation2***: If $g(t) = \ddot{f}(t)$, then $\hat{g}(s) = -\dot{f}(0) - sf(0) + s^{2}\hat{f}(s)$.
+
+#### Example with ODE
+
+Consider $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}+\frac{\mathrm{d}y}{\mathrm{d}t} - 2y = e^{-2t}\quad\text{with}\quad y(0) = 1,\dot{y}(0) = 0.$$
+
+* Try the Laplace transform: $$-\dot{y}(0) - sy(0) + s^{2}\hat{y}-y(0) + s\hat{y} - 2\hat{y} = \frac{1}{s+2}\implies\hat{y} = \frac{1}{9}\left(\frac{1}{s-1}-\frac{1}{s+2}-\frac{3}{(s+2)^{2}}\right)+\frac{1}{3}\left(\frac{2}{s-1}+\frac{1}{s+2}\right).$$
+* Hence by ***Inverse Laplace Transform***, $$y = \frac{1}{9}\left(e^{t}-e^{-2t}-3te^{-2t}\right)+\frac{1}{3}\left(2e^{t}+e^{-2t}\right) = \frac{1}{9}\left(7e^{t}+(2-3t)e^{-2t}\right).$$
+
+#### Convolution
+
+* If $f(t) = g(t) = 0$ for $t < 0$, then $$h(t) = (f* g)(t) = \int_{-\infty}^{\infty}f(\tau)g(t-\tau)\mathrm{d}\tau = \int_{0}^{t}f(\tau)g(t-\tau)\mathrm{d}\tau,$$ and the Laplace transforming gives $$\hat{h}(s)  = \hat{f}(s)\hat{g}(s).$$
+***Note***: $f(t)$ here do not have to be $f(t)$, it can also be $\dot{f}(t)$. E.g. Suppose we want to find $f(t)$ for $t > 0$ which solves $$f(t) = a\sin t+2\int_{0}^{t}\dot{f}(\tau)\sin(t-\tau)\mathrm{d}\tau,$$ subject to $f(0) = 0$.
+* The integral here is a convolution, $\dot{f}* \sin t$, and the limits suggest a Laplace transform: $$\hat{f}(s) = \frac{a}{s^{2}+1}+2\left(-f(0)+s\hat{f}\right)\frac{1}{s^{2}+1}\implies\hat{f} = \frac{a}{(s-1)^{2}}\implies f(t) = ate^{t}.$$
+
+#### Solving PDEs
+
+For $x > 0$ and $t > 0$, solve the PDE $$x\frac{\partial u}{\partial t}+\frac{\partial u}{\partial x} = x\quad\text{with}\quad u(x,0) = u(0,t) = 0.$$
+
+* Laplace transform $t\mapsto s$: $$x(-u(x,0) + s\hat{u}(x,s)) + \frac{\partial\hat{u}}{\partial x} = \frac{x}{s},\quad\text{with}\quad\hat{u}(0,s) = 0.$$
+
+#### Limits
+
+For $\hat{f}(s) = \int_{0}^{\infty}f(t)e^{-st}\mathrm{d}t$, look at $s\to\infty$ by using Watson's Lemma.
