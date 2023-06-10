@@ -235,4 +235,17 @@ Often, $\mathcal{C}$ is $\mathbb{R}$ or $[0,\infty)$. $K(x,y)$ is called the ***
 
 * If $f(z)$ is ***differentiable everywhere*** in $\mathcal{D}$ and $\mathcal{D}$ is ***simply connected***, which means if any path in $\mathcal{D}$ can be smoothly deformed into any other path in $\mathcal{D}$ between the same ned points without moving the end points, then the integral of $f(z)$ is independent of the path.
 
-![nsc](https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/assets/128298224/26de83ac-d2d7-4979-b239-1a52db7e9f40)
+<img width = 50% height = 50% src = https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/assets/128298224/26de83ac-d2d7-4979-b239-1a52db7e9f40>
+
+#### The Residue Theorem
+
+First of all, consider an isolated singularity of $f(z)$ at $z_{0}$, so that in some neighbourhood $\mathcal{A}$ of $z_{0}$, $f(z)$ is ***differentiable*** on $\mathcal{A}\setminus\set{z_{0}}$. We classfiy the singularity at $z_{0}$ as follows:
+
+* If $\lim_{z\to z_{0}} f(z)$ exists, then $z_{0}$ is a ***removable singularity***.
+* If $\lim_{z\to z_{0}}(f(z) - a_{1}/(z-z_{0}))$ exists for some $a_{1}\ne 0$, then $f$ has a ***simple pole*** at $z_{0}$ with ***residue*** $\text{Res}(f,z_{0}) = a_{1}$.
+* If the limit $$\lim_{z\to z_{0}}\left(f(z)-\frac{a_{1}}{z-z_{0}}-\frac{a_{2}}{(z-z_{0})^{2}}-...-\frac{a_{n}}{(z-z_{0})^{n}}\right)$$ exists for some $n$ and some $a_{1},...,a_{n}$ with $a_{n}\ne 0$, then $f$ has a ***pole of order*** $n$ at $z_{0}$.
+* Otherwise, $f$ has an ***essential singularity*** at $z_{0}$, e.g. $$f(z) = e^{1/z}.$$
+
+#### Contour integral example
+
+Consider the function $\tilde{g}(\omega) = \frac{2}{5+2i\omega - \omega^{2}}$, the Fourier inversion formula gives $$g(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\frac{2e^{i\omega t}}{5+2i\omega - \omega^{2}}\mathrm{d}\omega.$$
