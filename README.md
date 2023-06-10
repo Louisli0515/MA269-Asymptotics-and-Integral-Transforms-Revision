@@ -234,3 +234,5 @@ Often, $\mathcal{C}$ is $\mathbb{R}$ or $[0,\infty)$. $K(x,y)$ is called the ***
 #### Cauchy's Theorem
 
 * If $f(z)$ is ***differentiable everywhere*** in $\mathcal{D}$ and $\mathcal{D}$ is ***simply connected***, which means if any path in $\mathcal{D}$ can be smoothly deformed into any other path in $\mathcal{D}$ between the same ned points without moving the end points, then the integral of $f(z)$ is independent of the path.
+
+![nsc](https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/assets/128298224/26de83ac-d2d7-4979-b239-1a52db7e9f40)
