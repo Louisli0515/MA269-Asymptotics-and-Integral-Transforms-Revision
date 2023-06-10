@@ -260,4 +260,60 @@ Consider the function $\tilde{g}(\omega) = \frac{2}{5+2i\omega - \omega^{2}}$, t
 * For $t > 0$, we can use ***Cauchy's Theorem*** to deform the contour of integration to around the singularities, and using Residue's Theorem gives for $t > 0$, $$g(t) = 2\pi i\left(\frac{1}{4\pi}e^{-t}e^{-2it}-\frac{1}{4\pi}e^{-t}e^{2it}\right) = e^{-t}\sin(2t).$$
 * For $t < 0$, we get $g(t) = 2\pi i(0) = 0$. Hence, $$g(t) = 1_{t > 0}e^{-t}\sin(2t).$$
 
-We can check this by using Fourier Transform: $$\tilde{g}(\omega) = \int_{-\infty}^{\infty}1_{t > 0}e^{-t}\sin(2t)e^{-i\omega t}\mathrm{d}t = \frac{\frac{1}{2}}{\omega - (i-2)} - \frac{\frac{1}{2}}{\omega - (i+2)}.$$
+We can check this by using ***Fourier Transform***: $$\tilde{g}(\omega) = \int_{-\infty}^{\infty}1_{t > 0}e^{-t}\sin(2t)e^{-i\omega t}\mathrm{d}t = \frac{\frac{1}{2}}{\omega - (i-2)} - \frac{\frac{1}{2}}{\omega - (i+2)}.$$
+
+### Fourier Transforms
+
+#### Definition of Fourier transform and inverse Fourier transform
+
+* The ***Fourier transform*** of a function $f(t)$ is $$\tilde{f}(\omega) = (\mathcal{F}f)(\omega) = \int_{-\infty}^{\infty}f(t)e^{-i\omega t}\mathrm{d}t.$$
+* The ***Inverse Fourier transform*** of a function $\tilde{f}(\omega)$ is $$f(t) = (\mathcal{F}^{-1}\tilde{f})(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde{f}(\omega)e^{i\omega t}\mathrm{d}t.$$
+
+#### Properties of Fourier transforms
+
+* ***Linearity***: If $h(t) = af(t)+bg(t)$, then $\tilde{h}(\omega) = a\tilde{f}(\omega)+b\tilde{g}(\omega)$.
+* ***Shift property***(I): If $g(t) = f(t-a)$, then $\tilde{g}(\omega) = e^{-i\omega a}\tilde{f}(\omega)$.
+* ***Shift property***(II): If $g(t) = e^{i\Omega t}f(t)$, then $\tilde{g}(\omega) = \tilde{f}(\omega - \Omega)$.
+* ***Scaling***: If $g(t) = f(at)$, then $\tilde{g}(\omega) = \frac{1}{|a|}\tilde{f}(\omega/a)$.
+* ***Differentiation***: If $g(t) = f'(t)$, then $\tilde{g}(\omega) = i\omega\tilde{f}(\omega)$.
+* ***Product***: If $g(t) = tf(t)$, then $\tilde{g}(\omega) = i\tilde{f}'(\omega)$.
+
+#### Examples with ODE
+
+Consider $$\frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}+\frac{\mathrm{d}y}{\mathrm{d}t}+ty = 0,\quad y(0) = 1\quad\text{and}\quad\lim_{t\to-\infty}y(t) = 0.$$
+
+* Using Fourier transformation with the properties, $$(i\omega)^{2}\tilde{y}+i\omega\tilde{y}+i\frac{\mathrm{d}}{\mathrm{d}\omega}\tilde{y} = 0\implies \tilde{y} = Ae^{-\omega^{2}/2-i\omega^{3}/3}.$$
+* Hence, by inversing Fourier transform, $$y(t) = \frac{A}{2\pi}\int_{-\infty}^{\infty}e^{-\omega^{2}/2-i\omega^{3}/3+i\omega t}\mathrm{d}\omega,$$ where we choose $A$ so that $y(0) = 1$. 
+* In fact, we needed $y\to 0$ as $t\to-\infty$ for the Fourier transform $\tilde{y}$ to exist.
+
+#### Convolution
+
+* Given $f(t)$ and $g(t)$, we define the ***convolution*** $h = f* g$ by $$h(t) = \int_{-\infty}^{\infty}f(\tau)g(t-\tau)\mathrm{d}\tau = \int_{-\infty}^{\infty}f(t-\tau)g(\tau)\mathrm{d}\tau.$$
+* So, $$\tilde{h}(\omega) = \tilde{f}(\omega)\tilde{g}(\omega).$$
+
+#### Parseval's theorem
+
+Given two functions $f(t)$ and $g(t)$, and using $\overline{x+iy} = x-iy$ to denote the complex conjugate, then $$\frac{1}{2\pi}\int_{-\infty}^{\infty}\tilde{f}(\omega)\overline{\tilde{g}(\omega)} = \int_{-\infty}^{\infty}f(t)\overline{g(t)}\mathrm{d}t.$$
+
+* This is ***Parseval's theorem***. In particular, if $f(t) = g(t)$, then $$\frac{1}{2\pi}\int_{-\infty}^{\infty}|\tilde{f}(\omega)|^{2}\mathrm{d}\omega = \int_{-\infty}^{\infty}|f(t)|^{2}\mathrm{d}t,$$ which is known as ***Plancherel's theorem***.
+
+### Laplace Transforms
+
+One limitation of Fourier transforms is that they only exist for functions $f:\mathbb{R}\to\mathbb{C}$ and what about $f:[a,\infty)\to\mathbb{C}$?
+
+* Extending $f:[0,\infty]\to\mathbb{C}$ to $g:\mathbb{R}\to\mathbb{C}$ by setting $$g(t) = f(t)\quad t\geq 0,$$ and $$g(t) = 0\quad t < 0.$$
+* This is called ***zero-extending***.
+
+#### Definition of Laplace Transform and Inverse Laplace Transform
+
+* The ***Laplace Transform*** is given by $$\hat{f}(s) = \int_{0}^{\infty}f(t)e^{-st}\mathrm{d}t.$$
+* The ***Inverse Laplace Transform*** of a function $f(t)$ is given by $$f(t) = \frac{1}{2\pi i}\int_{-i\infty+\alpha}^{i\infty+\alpha}\hat{f}(s)e^{st}\mathrm{d}s,$$ with $\alpha > \text{Re}(s_{j})$ for all singularities $s_{j}$ of $\hat{f}(s)$.
+
+#### Some really important and useful Laplace Transforms
+
+* For $f(t) = 1$, provided $\text{Re}(s) > 0$, $$\hat{f}(s) = \int_{0}^{\infty}e^{-st}\mathrm{d}t = \frac{1}{s}.$$
+* For $f(t) = e^{at}$, provided $\text{Re}(s) > \text{Re}(a)$, $$\hat{f}(s) = \int_{0}^{\infty}e^{at}e^{-st}\mathrm{d}t = \frac{1}{s-a}.$$
+* For $f(t) = \cos(at)$, provided $\text{Re}(s) > |\text{Im}(a)|$, $$f(t) = \frac{1}{2}(e^{iat}+e^{-iat}\implies\hat{f}(s) = \frac{s}{s^{2}+a^{2}}.$$
+* For $f(t) = \sin(at)$, provided $\text{Re}(s) > |\text{Im}(a)|$, $$f(t) = \frac{1}{2i}(e^{iat}-e^{-iat})\implies\hat{f}(s) = \frac{a}{s^{2}+a^{2}}.$$
+* For $f(t) = t^{n}$, provided $\text{Re}(s) > 0$, $$\hat{f}(s) = \int_{0}^{\infty}t^{n}e^{-st}\mathrm{d}t = \frac{\Gamma(n+1)}{s^{n+1}}.$$
+* For $f(t) = e^{t^{2}}$, then $\hat{f}(s)$ doesn't exist for any $s$.
