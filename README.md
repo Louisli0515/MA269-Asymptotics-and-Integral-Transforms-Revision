@@ -1,6 +1,64 @@
 # MA269-Asymptotics-and-Integral-Transforms-Revision
 My own notes about the MA269 revision, mainly from the notes and example sheets
 
+- [MA269-Asymptotics-and-Integral-Transforms-Revision](#ma269-asymptotics-and-integral-transforms-revision)
+  * [Lecture notes](#lecture-notes)
+  * [Formula sheet](#formula-sheet)
+  * [Example sheets](#example-sheets)
+    + [Big O notation](#big-o-notation)
+    + [Little o notation](#little-o-notation)
+    + [Big $\Theta$ notation](#big---theta--notation)
+    + [Asymptotic Series](#asymptotic-series)
+    + [Asymptotic Sequences](#asymptotic-sequences)
+      - [Uniqueness for the coefficients](#uniqueness-for-the-coefficients)
+      - [Non-uniqueness for the asymptotic series](#non-uniqueness-for-the-asymptotic-series)
+    + [Asymptotics of Algebraic Equations](#asymptotics-of-algebraic-equations)
+      - [Method 1: iteration](#method-1--iteration)
+      - [Method 2: successive approximation](#method-2--successive-approximation)
+      - [Method 3: series expansion](#method-3--series-expansion)
+    + [Singular perturbations](#singular-perturbations)
+    + [The Exponential Integral](#the-exponential-integral)
+      - [First attempt: Taylor expansion](#first-attempt--taylor-expansion)
+      - [Second attempt: Split the integral](#second-attempt--split-the-integral)
+    + [Watson's Lemma](#watson-s-lemma)
+      - [Watson's Lemma Theorem](#watson-s-lemma-theorem)
+      - [Watson's Lemma General Form](#watson-s-lemma-general-form)
+    + [Laplace's Method](#laplace-s-method)
+      - [Laplace's Method Theorem](#laplace-s-method-theorem)
+      - [Stirling's Formula](#stirling-s-formula)
+    + [The Method of Stationary Phase](#the-method-of-stationary-phase)
+    + [The Method of Steepest Descent](#the-method-of-steepest-descent)
+      - [Stationary Phase](#stationary-phase)
+    + [Asymptotics of Differential Equations](#asymptotics-of-differential-equations)
+      - [Nondimensionalisation and scaling](#nondimensionalisation-and-scaling)
+      - [Regular problems](#regular-problems)
+      - [Rescaling and balancing](#rescaling-and-balancing)
+      - [Singular problems and Van Dyke's matching rule](#singular-problems-and-van-dyke-s-matching-rule)
+      - [Composite expansions](#composite-expansions)
+      - [Rescaling for nonlinear differential equations](#rescaling-for-nonlinear-differential-equations)
+    + [Integral Transforms](#integral-transforms)
+    + [Complex Methods](#complex-methods)
+      - [A useful estimate for the magnitude of a complex integral](#a-useful-estimate-for-the-magnitude-of-a-complex-integral)
+      - [Cauchy's Theorem](#cauchy-s-theorem)
+      - [The Residue Theorem](#the-residue-theorem)
+      - [Contour integral example](#contour-integral-example)
+    + [Fourier Transforms](#fourier-transforms)
+      - [Definition of Fourier transform and inverse Fourier transform](#definition-of-fourier-transform-and-inverse-fourier-transform)
+      - [Properties of Fourier transforms](#properties-of-fourier-transforms)
+      - [Example with ODE](#example-with-ode)
+      - [Convolution](#convolution)
+      - [Parseval's theorem](#parseval-s-theorem)
+    + [Laplace Transforms](#laplace-transforms)
+      - [Definition of Laplace Transform and Inverse Laplace Transform](#definition-of-laplace-transform-and-inverse-laplace-transform)
+      - [Some really important and useful Laplace Transforms](#some-really-important-and-useful-laplace-transforms)
+      - [Properties of Laplace transforms](#properties-of-laplace-transforms)
+      - [Example with ODE](#example-with-ode-1)
+      - [Convolution](#convolution-1)
+      - [Solving PDEs](#solving-pdes)
+      - [Limits](#limits)
+      - [Summary of Fourier and Laplace transform](#summary-of-fourier-and-laplace-transform)
+
+
 ## Lecture notes
 
 [ma269_lecture_notes.pdf](https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/files/11502774/ma269_lecture_notes.pdf)
@@ -350,3 +408,9 @@ For $x > 0$ and $t > 0$, solve the PDE $$x\frac{\partial u}{\partial t}+\frac{\p
 #### Limits
 
 For $\hat{f}(s) = \int_{0}^{\infty}f(t)e^{-st}\mathrm{d}t$, look at $s\to\infty$ by using Watson's Lemma.
+
+#### Summary of Fourier and Laplace transform
+
+<img width = 100% height = 100% src = https://github.com/Louisli0515/MA269-Asymptotics-and-Integral-Transforms-Revision/assets/128298224/1922b6f0-8317-4a59-9a3a-4bc84a80625c>
+
+
